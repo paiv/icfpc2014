@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby libhc/compiler.rb $('ls' -b libhc/std/*) "$@"

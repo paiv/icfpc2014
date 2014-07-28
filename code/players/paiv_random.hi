@@ -1,0 +1,24 @@
+
+(defun statecons (rnd x) (cons rnd x) )
+(defun staternd (state) (car state))
+
+(defun main (world _) (cons
+
+    ; initial ai state
+    (statecons
+        (cons 42 7)
+        0)
+
+    ; step function
+    (lambda (state world)
+
+        (let ((r (random 4 (staternd state))))
+
+            (cons
+                ; ai state
+                (statecons (randomstate r) 0)
+
+                ; move
+                (randomvalue r)
+    )))
+))

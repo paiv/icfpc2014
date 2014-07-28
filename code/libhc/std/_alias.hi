@@ -1,0 +1,7 @@
+(alias 'debug 'dbug)
+(alias 'break 'brk)
+
+(alias '+ 'add)
+(alias '- 'sub)
+(alias '* 'mul)
+(alias '/ 'div)

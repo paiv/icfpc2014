@@ -1,0 +1,4 @@
+
+(defun mod (x d)
+  (- x (* (/ x d) d))
+)

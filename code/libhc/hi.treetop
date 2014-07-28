@@ -1,0 +1,58 @@
+
+grammar Hi
+
+  rule program
+    (sN / s expression sN)* <HiProgram>
+  end
+
+  rule expression
+    '(' body ')' <Expression>
+  end
+
+  rule body
+    ( expression / identifier / integer / operator / qidentifier / qoperator / S / sN )* <Body>
+  end
+
+
+  rule integer
+    ('+' / '-')? [0-9]+ <IntegerLiteral>
+  end
+
+  rule identifier
+    [a-zA-Z_] [a-zA-Z0-9_\-]* <Identifier>
+  end
+
+  rule operator
+    [\+\-*/\\!$%\^&\=] <Operator>
+  end
+
+  rule qidentifier
+    '\'' identifier <QuotedIdentifier>
+  end
+
+  rule qoperator
+    '\'' operator <QuotedOperator>
+  end
+
+
+  rule sn
+    sN?
+  end
+
+  rule sN
+    ( ( S "\n" / s comment_to_eol / s "\n" ) s comment_to_eol? )+
+  end
+
+  rule s
+    S?
+  end
+
+  rule S
+    [ \t]+
+  end
+
+  rule comment_to_eol
+    ';' (!"\n" .)* "\n"
+  end
+
+end

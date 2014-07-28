@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+if [ -n "$1" ]; then
+    cp -f "$1" "../solution/lambdaman.gcc"
+fi
+
+ARC_NAME="icfpc2014-paiv-$(date -u +'%Y%m%d%H%M%S').tar.gz"
+
+tar -czf "$ARC_NAME" \
+    -C .. \
+    solution/lambdaman.gcc \
+    solution/ghost0.ghc \
+    code/gasm \
+    code/hc \
+    code/libgasm/ \
+    code/libhc/ \
+    code/README
+
+shasum -b "$ARC_NAME" > "${ARC_NAME}.sha1"

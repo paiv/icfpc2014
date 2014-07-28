@@ -1,0 +1,31 @@
+
+
+(defun rand (rnd)
+
+    (defun lo (x) (/ (* x 65536) 65536)) ;inline
+
+    (let ((z (car rnd))
+          (w (cdr rnd)))
+
+    (let (
+        (x (+ (* 36969 (lo z)) (/ z 65536)))
+        (y (+ (* 18000 (lo w)) (/ w 65536)))
+        )
+
+        (cons (+ (* x 65536) y) (cons x y))
+    ))
+)
+
+
+(defun random (n rnd)
+    (let ((m (rand rnd)))
+
+        (cons
+            (mod (car m) n)
+            (cdr m)
+            )
+    )
+)
+
+(defun randomstate (r) (cdr r))
+(defun randomvalue (r) (car r))
